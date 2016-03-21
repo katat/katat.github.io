@@ -1,15 +1,15 @@
 # Site settings
-title: Clean Blog
+title: Kata Tech Life
 header-img: img/home-bg.jpg
-email: your-email@yourdomain.com
-copyright_name: Your/Project/Corporate Name
-description: "Write your site description here. It will be used as your sites meta description as well!"
+email: kata.choi@gmail.com
+copyright_name: Katat Choi
+description: "I am a full stack javascript developer, specializing in Node.JS/Angular.JS/Ionic/Cordova/Docker etc.., experiencing in building web/mobile products from scratch for startups. I love learning new technologies and taking challenges."
 #baseurl: "/startbootstrap-clean-blog-jekyll"
 url: "http://yourdomain.com"
-twitter_username: SBootstrap
-github_username:  davidtmiller
+twitter_username: katat
+github_username:  katat
 facebook_username:  IronSummitMedia
-email_username:  your-email@yourdomain.com
+email_username:  kata.choi@gmail.com
 
 # Build settings
 kramdown:
