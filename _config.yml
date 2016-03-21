@@ -12,6 +12,7 @@ facebook_username:  katat
 email_username:  kata.choi@gmail.com
 
 # Build settings
+comments: true
 kramdown:
   input: GFM
 highlighter: rouge
