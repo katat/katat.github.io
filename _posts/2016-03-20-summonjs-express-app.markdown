@@ -16,6 +16,7 @@ Coming from the Java world, I appreciate how the Java spring ease the dependency
 When writing unit tests, it is very common to get to a point that there are dependencies not easy to mock up. Even there are always ways to decouple the code to into smaller chucks to make the unit testable, but many times I doubt if it is really worthwhile to do so.
 
 Then I started looking around for the similar solutions to Java Spring in Node.JS world. I found [dependable](https://github.com/idottv/dependable), which state itself as:
+
 > A minimalist dependency injection framework for node.js.
 
 As it described it is a minimalist dependency injection framework, its feature is far simpler from what Java Spring has. But the dependency injection is enough for many use cases. Basically, `dependable` allow dependencies to be defined with `names` in the code instead of via XML or JSON, and automatically inject the dependency objects as dependent module's function arguments, names of which are the same as the defined dependencies.
@@ -88,7 +89,7 @@ module.exports = function(app, FormController) {
 
 > Note the `app` is not defined in the configuration file. That is because this dependency is only available after initialized the express server instance. So it needs to be injected during the bootstrap process. We will see how it works in the next section.
 
-### Bootstrap
+### Bootstrap App
 For this sample express APP, it will need to start the app with http server listening port. Durning this bootstrap process, it will require the integration with the SummonJS in order to make the dependency injection works. Below is the code bootstrap the app.
 
 ```javascript
