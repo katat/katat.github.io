@@ -1,26 +1,26 @@
 ---
 layout:     post
-title:      "Dinosaurs are extinct today"
-subtitle:   "because they lacked opposable thumbs and the brainpower to build a space program."
-date:       2014-06-10 12:00:00
-author:     "Start Bootstrap"
+title:      "SummonJS - a minimal framework to manage dependencies on Node.JS"
+subtitle:   "Create An Easy to Test Node.JS Express APP by injecting dependencies via SummonJS"
+date:       2016-03-20 12:00:00
+author:     "Katat Choi"
 header-img: "img/post-bg-01.jpg"
 ---
 
 # SummonJS - a minimal framework to manage dependencies on Node.JS
 
-Coming from the JAVA world, it is very common to seek the similar solution Node.JS. I appreciate how the JAVA spring ease the dependency management, using its XML configuration to define the dependencies for the application, making the whole application configurable via the XML file. This way of managing the dependencies help keep the code clean, and easy to swap the dependencies when needed in certain situations, such as unit tests.
+Coming from the Java world, I appreciate how the Java spring ease the dependency management, using its XML configuration to define the dependencies for the application, making the whole application configurable. This way of managing the dependencies help keep the code clean, and easy to swap the dependencies when needed in certain situations, such as unit tests.
 
 > Dependency injection is a software design pattern in which one or more dependencies (or services) are injected, or passed by reference, into a dependent object.
 
-When writing unit tests, it is very common to get to a point that there are dependencies not easy to mock up. Even there are always ways to decouple the code to into smaller chucks to make the unit tests easier, but many times I doubt if it is really worthwhile to do so in order make it unit testable.
+When writing unit tests, it is very common to get to a point that there are dependencies not easy to mock up. Even there are always ways to decouple the code to into smaller chucks to make the unit testable, but many times I doubt if it is really worthwhile to do so.
 
-Then I started looking at similar solutions to Java Spring in Node.JS world. I found `dependable`, which state itself as:
+Then I started looking around for the similar solutions to Java Spring in Node.JS world. I found [dependable](https://github.com/idottv/dependable), which state itself as:
 > A minimalist dependency injection framework for node.js.
 
-As it described it is a minimalist dependency injection framework, its feature is far different from what Java Spring has. But the dependency injection is enough for many use cases. Basically, dependable allow dependencies to be defined with `names` in the code instead of via XML or JSON, and automatically inject the dependency objects as dependent object's function arguments, names of which are the same as the defined dependencies.
+As it described it is a minimalist dependency injection framework, its feature is far simpler from what Java Spring has. But the dependency injection is enough for many use cases. Basically, `dependable` allow dependencies to be defined with `names` in the code instead of via XML or JSON, and automatically inject the dependency objects as dependent module's function arguments, names of which are the same as the defined dependencies.
 
-I was using dependable for a while and putting all the dependency definition codes in a file JS file. Overtime, the definition JS became bigger and bigger with many boilerplate codes. I thought it would be better to put all the JS dependency code simply into a JSON file. Then I created an open source project call `SummonJS` to wrap up the `dependable` framework into a way that makes the code cleaner and easier to use, added a `hook` feature allow adding pre/post hook callback functions to a dependency's object function.
+I was using `dependable` for a while and putting all the dependency definitions in a file JS file. Overtime, the JS dependency definition file got bigger and bigger with many boilerplate codes. I thought it would be better to put all the JS dependency code simply into a JSON file. Then I created an open source project call `SummonJS` to wrap up the `dependable` framework into a way that makes the code cleaner and easier to use, also added a `hook` feature allow adding pre/post hook callback functions to a dependency's object function.
 
 In this post, I will introduce how the [SummonJS](https://github.com/katat/summonjs) can help manage the Node.JS dependencies by creating a simple Node.JS express API, which is for creating custom forms.
 
