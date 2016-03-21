@@ -174,7 +174,7 @@ app.summon.register('mockgoose', function(){
 app.setup();
 ```
 
-What above code does is replace the test dependency configs, and register it in run time to override the one in JSON config file. Then it use the mockgoose to intercept the origin mongoose by `mockgoose(app.summon.get('mongoose'))`, avoiding testing against the real database.
+What above code does is replace the test dependency configs, and register it in run time to override the one in JSON config file. Then it use the mockgoose to intercept the origin mongoose, avoiding testing against the real database.
 
 > Note that we don't need to register mongoose to override the origin mongoose after modified by mockgoose, since all the dependencies returned by summon are singleton instances.
 
