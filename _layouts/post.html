@@ -46,7 +46,7 @@ layout: default
         </div>
     </div>
 </article>
-<div>"{{ page.url }}"</div>
+<div>"{{ page.url | prepend: site.url}}"</div>
 <div id="disqus_thread"></div>
 <script>
 /**
