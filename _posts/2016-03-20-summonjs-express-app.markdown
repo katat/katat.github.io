@@ -120,8 +120,11 @@ app.setup = function(callback) {
 };
 ```
 Here is how it works in order:
+
  1. Initializes the `SummonJS` with the dependency configuration JSON. At other place during the startup will call the `app.setup` function.
+
  2. Looks up the express `route` dependency names in the configuration JSON by name convention `route`, and save them in the `targets` variable.
+
  3. Now the express instance `app` is ready for use, call `summon.invoke` to pass in `app` to the override property, and named it as `app`. Also passed in dependency name `targets`as target parameter, all of which will be called and initialized at this point, so all the `route` dependencies will be setup and initialize the whole dependency tree, from route, to FormController, to FormModel, to FormDB.
 
 ### Unit Tests
@@ -156,7 +159,7 @@ it('should create new form type', function (done) {
 });
 ```
 
-You should see the only mock is in the `beforeEach`, it uses the `mockgoose` to reset the mongodb database for each unit test. But there is another simple script to swap the original mongoose dependency with mockgoose.
+In the `beforeEach`, it uses the `mockgoose` to reset the mongodb database for each unit test. But there is another simple script to swap the original mongoose dependency with mockgoose.
 
 ```javascript
 global.app = require('../app');
@@ -178,6 +181,6 @@ What above code does is replace the test dependency configs, and register it in 
 So you can see, SummonJS is capable to swap the dependencies for the any parts of the dependency tree, easing the mocks for unit tests.
 
 ### Summary
-Hopefully this post demonstrates what SummonJS can help in easing the dependencies management, leading to a cleaner code base with minimal boilerplate codes, and give clues on what you can do with it in real world Node.JS applications. For the example app, you clone from [flexform-api](https://github.com/katat/flexform-api).
+Hopefully this post demonstrates what SummonJS can help in easing the dependencies management, leading to a cleaner code base with minimal boilerplate codes, and give clues on what you can do with it in real world Node.JS applications. For the example app, you take a look at the source code [flexform-api](https://github.com/katat/flexform-api).
 
 There is another interesting feature in SummonJS, called `hook`, enable adding pre/post hooks to a dependency object's function. This is useful for scenarios such as caching results return in function's async callback or pre-processing the inputs before passing them to the main function. I will talk about this feature in another post.
