@@ -26,7 +26,8 @@ In this post, I will introduce how the [SummonJS](https://github.com/katat/summo
 
 ### Dependency Definition
 Suppose the backend app has the following SummonJS dependency definition:
-{% highlight javascript %}
+
+```javascript
 {
   "dependency": {
     "Configs": "./config/dev.json",
@@ -40,7 +41,7 @@ Suppose the backend app has the following SummonJS dependency definition:
     }
   }
 }
-{% endhighlight %}
+```
 
 This JSON file defines all the dependencies needed for the app. The property names are the dependency names for the source code path as the corresponding values. The another format of the definition is like how the `mongoose` dependency is defined. The `path` is the value of where the dependency will be required from, and the interesting part is the `shim` property that tells `SummonJS` to require `mongoose` without any other dependencies to be passed as arguments when initializing the `mongoose` instance.
 
