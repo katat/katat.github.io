@@ -3,7 +3,7 @@ title: Kata Tech Life
 header-img: img/home-bg.jpg
 email: kata.choi@gmail.com
 copyright_name: Katat Choi
-description: "I am a full stack javascript developer, specializing in Node.JS/Angular.JS/Ionic/Cordova/Docker etc.., experiencing in building web/mobile products from scratch for startups. I love learning new technologies and taking challenges."
+# description: "I am a full stack javascript developer, specializing in Node.JS/Angular.JS/Ionic/Cordova/Docker etc.., experiencing in building web/mobile products from scratch for startups. I love learning new technologies and taking challenges."
 #baseurl: "/startbootstrap-clean-blog-jekyll"
 url: "http://katat.github.io"
 twitter_username: katat

@@ -2,6 +2,7 @@
 layout:     post
 title:      "Dockerize C# Application"
 subtitle:   "Start and run C# application with one command on Linux system"
+description: "Start and run C# application with one command on Linux system"
 date:       2016-04-16 14:16:00
 author:     "Katat Choi"
 header-img: "img/docker-csharp.png"
