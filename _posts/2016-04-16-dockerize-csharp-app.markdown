@@ -126,7 +126,7 @@ csharp:
 
 Now, it should only need one command to build and run:
 
-`docker-compose run csharp`
+`docker-compose up`
 
 
 ## Summary
