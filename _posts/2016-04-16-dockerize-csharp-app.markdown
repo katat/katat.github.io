@@ -123,7 +123,8 @@ csharp:
   entrypoint: ./run.sh
 ```
 
-Build and Run only with one command:
+Now, it should needs one command to build and run:
+
 `docker-compose run csharp`
 
 
