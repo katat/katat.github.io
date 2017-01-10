@@ -12,7 +12,7 @@ for the front end, even small updates to the code, may requires a lot of interac
 ### Agile process
 The key of [agile development](http://agilemanifesto.org/) process is to code up a working software, enabling users to interact with the software, and collecting the feedbacks as soon as possible. Then we repeat this process as sprints until all the requirements have been satisfied. The process no doubt would introduce lots of changes to the code, as the requirements keep evolving, and probably need refactors to the source codes. With the tests covering the functionalities built in earlier sprints will keep the refactor works more stable and give developers confidences to make necessary changes to maintain the health status of the source codes.
 
-Visual regression test facilitates quickly gathering visual feedbacks for changes, making it easier to test the components used in different parts of the web applications. Also VRT can be used as a part of integration test, which includes both the frontend and backend.
+Visual regression test facilitates quickly gathering visual feedbacks for changes, making it easier to test the components used in different parts of the web applications. Also VRT can be used as a part of End-to-End test, which does user interaction tests at the front end to make sure the user experiences work as expected while monitoring the backend system processes.
 
 ### Tedious testings in SPA
 Single Page Application or any complicated web applications, normally includes many interactions in different views, and the states of a view could depend on the previous views's states. Manual testing on this type of application could involve a lot of clicks and typings just for a single function. It is really dull for a creative developer to do this kind of testings work, and probably would waste a huge amount of time to dig out a bug. The worse is that eventually it kills the developers' motivation for doing the dull repeated works without a proper automated testing tool.
@@ -24,37 +24,152 @@ Automated tests is an efficient way to pass on the works among team members. It 
 
 Every time when there is a pull request, visual regression test can be used as a integration test tool, reduce the testing efforts for every pull requests and be more confident on the release cycles.
 
-## existing visual regression test solutions
-### [BackstopJS](https://github.com/garris/BackstopJS)
+## Open source VRT tools
 
-Suitable for static web pages. As it states in its github page.
+### [BackstopJS](https://github.com/garris/BackstopJS)
+The idea of writing testing definitions in a JSON file is great, just need to define the different screen sizes and what parts of the web page to take screenshots by CSS selector without writing JS code. It is easy to share and communicate with, having a clear information about what to test, compared with lengthy JS codes. It also supports simulating user interactions using CasperJS custom scripts, referenced from the JSON file. However, it is more suitable for static web pages, as the creator states in its github page.
 >BackstopJS may be just the thing if you develop custom WordPress, Drupal or other CMS templates
 
+
 ### [PhantomCSS](https://github.com/Huddle/PhantomCSS)
-Need to writing testing JS code in [Casperjs](http://casperjs.org) framework.
+The library is designed to integrate with the [CasperJS](http://casperjs.org) scripts, flexible to create screenshots at any part of the web page by CSS selector, at any point of time during the UI test flow.
 
-## why vbot, what it brings compared to others
-### easy to make interaction flows
-JSON based schema to defined view interactions, without writing casper/phantomjs code. Easy to create the interaction flow
+### VBot, a new player
+The goal of [vbot](https://github.com/katat/vbot) is to help developers create test quickly with minimum learning curve, and save their dev time and mental energy, mostly importantly sustain the quality of the software work in a long run. It is designed to embrace the simplicity and flexibility to create tests. Here is the key features/goals of vbot:
 
-because most of the common interactions are: assert, screenshot, click, scroll, these interactions are defined in the vbot JSON schema to cover most of the interaction use cases.
+ - **JSON based**  Tests can be defined in JSON with simple schema, without any JS codes.
+ - **Interaction flow**  Support interaction tests, particularly useful for feature-rich web app or SPA.
+ - **Screenshots**  Sceenshots can be taken at any point during the testing flow, then compare with baseline and generate reports.
+ - **Portable**  Run on local dev environment or on remote server to facilitate continuous integration process.
 
-### easy to distribute among the team
-JSON based schema makes it much easier to share test schema with the team members, as it has common understandings over the definitions, avoid monkey JS test codes.
 
-### take care of SPA use cases
-SPA usually has pretty complicated functions inside a same view to interact with. A JSON based action flow definition could simplify the process of creating these types of tests.
+### Why JSON based?
+JSON based schema makes it much easier to share test schema with the team members, as it has common understandings over the definitions. When reading the JSON definitions, it is much easier to skim through and locate to the spot where they want to, saving time and mental energy from messing with monkey JS test codes. It is also easier to compare the tests definitions between current and previous commit.
 
-## technical parts
-### what vbot based on?
-- casperjs
-- phantomjs
-- phantomcss
+## VBot in action
+So enough with the theory about the visual regression tests, let's take a look at how vbot can ease the VRT process. Suppose we want to test this [TODO](http://todomvc.com/examples/react) web app using vbot. We define the interaction flow in a JSON file as below:
 
-## how to use
-### schema definitions
-### test results
-examples
+```
+{
+    "viewWidth": 375,
+    "viewHeight": 677,
+    "captureSelector": "html",
+    "host": "http://todomvc.com",
+    "scenarios": [
+        {
+            "name": "todo test",
+            "path": "/examples/react",
+            "actions": [
+                {
+                    "type": "assert",
+                    "waitFor": ".new-todo",
+                    "shot": true,
+                    "comment": "wait for the input element .new-todo appear and take a screenshot"
+                },{
+                    "type": "enter",
+                    "waitFor": ".new-todo",
+                    "value": "drink a cup of coffee",
+                    "enter": true,
+                    "comment": "enter task message and press 'enter' key"
+                },{
+                    "type": "assert",
+                    "waitFor": "ul.todo-list li:nth-child(1)",
+                    "shot": true,
+                    "comment": "make sure there is a newly created task in the list and take screenshot"
+                },{
+                    "type": "enter",
+                    "waitFor": ".new-todo",
+                    "value": "drink another cup of coffee",
+                    "enter": true,
+                    "comment": "create second task"
+                },{
+                    "type": "assert",
+                    "waitFor": "ul.todo-list li:nth-child(2)",
+                    "shot": true,
+                    "comment": "ensure the second task is created"
+                },{
+                    "type": "click",
+                    "waitFor": "ul.todo-list li:nth-child(1) .toggle",
+                    "comment": "mark the first task as completed"
+                },{
+                    "type": "assert",
+                    "waitFor": "ul.todo-list li.completed:nth-child(1)",
+                    "shot": true,
+                    "commend": "ensure the completed status is reflected in the view and take screenshot"
+                }
+            ]
+        }
+    ]
+}
 
-## what in plan
-- support mocking http requests
+```
+
+The interaction flow is defined step by step, and straightforward. You probably could guess the meanings of the most parts in the definitions above. Then run the tests targeting the json file:
+```
+vbot --f=schema.json
+```
+
+It should execute the tests and generate the screenshots as shown below:
+
+------------
+
+```
+{
+    "type": "assert",
+    "waitFor": ".new-todo",
+    "shot": true,
+    "comment": "wait for the input element .new-todo appear and take a screenshot"
+}
+```
+![0_assert-.new-todo.png](/img/0_assert-.new-todo.png)
+
+-------------
+```
+{
+    "type": "enter",
+    "waitFor": ".new-todo",
+    "value": "drink a cup of coffee",
+    "enter": true,
+    "comment": "enter task message and press 'enter' key"
+},{
+    "type": "assert",
+    "waitFor": "ul.todo-list li:nth-child(1)",
+    "shot": true,
+    "comment": "make sure there is a newly created task in the list and take screenshot"
+}
+```
+![2_assert-ul.todo-list_li:nth-child(1).png](/img/2_assert-ul.todo-list_li:nth-child(1).png)
+
+--------------
+```
+{
+    "type": "enter",
+    "waitFor": ".new-todo",
+    "value": "drink another cup of coffee",
+    "enter": true,
+    "comment": "create second task"
+},{
+    "type": "assert",
+    "waitFor": "ul.todo-list li:nth-child(2)",
+    "shot": true,
+    "comment": "ensure the second task is created"
+}
+```
+![4_assert-ul.todo-list_li:nth-child(2).png](/img/4_assert-ul.todo-list_li:nth-child(2).png)
+
+---------------
+```
+{
+    "type": "click",
+    "waitFor": "ul.todo-list li:nth-child(1) .toggle",
+    "comment": "mark the first task as completed"
+},{
+    "type": "assert",
+    "waitFor": "ul.todo-list li.completed:nth-child(1)",
+    "shot": true,
+    "commend": "ensure the completed status is reflected in the view and take screenshot"
+}
+```
+![6_assert-ul.todo-list_li.completed:nth-child(1).png](/img/6_assert-ul.todo-list_li.completed:nth-child(1).png)
+
+------------
