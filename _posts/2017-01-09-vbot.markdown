@@ -105,6 +105,7 @@ So enough with the theory about the visual regression tests, let's take a look a
 ```
 
 The interaction flow is defined step by step, and straightforward. You probably could guess the meanings of the most parts in the definitions above. Then run the tests targeting the json file:
+
 ```
 vbot --f=schema.json
 ```
@@ -205,6 +206,7 @@ After re-run the command line above, it should report there is test result misma
 ------------------
 
 Then if rebase is needed, run the following command to rebase the images:
+
 ```
 vbot --f=schema.json --rebase
 ```
