@@ -173,3 +173,40 @@ It should execute the tests and generate the screenshots as shown below:
 ![6_assert-ul.todo-list_li.completed:nth-child(1).png](/img/6_assert-ul.todo-list_li.completed:nth-child(1).png)
 
 ------------
+
+If this is the first time vbot run the tests for this JSON definition file, the images generated are the baselines. The subsequent tests will compare the newly generated image file with the baselines and show the differences if it is not 100% match. For example, let's change the action definition below:
+
+```
+{
+    "type": "enter",
+    "waitFor": ".new-todo",
+    "value": "drink a cup of coffee",
+    "enter": true
+}
+```
+
+to
+
+```
+{
+    "type": "enter",
+    "waitFor": ".new-todo",
+    "value": "drink a cup of milk",
+    "enter": true
+}
+```
+
+After re-run the command line above, it should report there is test result mismatch the baseline and generated a image that highlights the difference:
+
+------------------
+
+![2_assert-ul.todo-list_li:nth-child(1).fail.png](/img/2_assert-ul.todo-list_li:nth-child(1).fail.png)
+
+------------------
+
+Then if rebase is needed, run the following command to rebase the images:
+```
+vbot --f=schema.json --rebase
+```
+
+So this is the basic demo on how to use vbot to do VRT. There are other features it supports, such as preset localStorage values, set maximum timeout for assert an element to appear, scroll page, etc. For more details about vbot, please go to its [github repo](https://github.com/katat/vbot).
