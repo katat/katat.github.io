@@ -209,4 +209,4 @@ Then if rebase is needed, run the following command to rebase the images:
 vbot --f=schema.json --rebase
 ```
 
-So this is a basic demo on how to use vbot to do VRT. There are other features, such as preset localStorage values, set maximum timeout for assert an element to appear, scroll page, etc. For more details about vbot, please go to its [github repo](https://github.com/katat/vbot).
+This is a basic demo on how to use vbot to do VRT. There are other features, such as preset localStorage values, set maximum timeout for assert an element to appear, scroll page, etc. For more details about vbot, please go to its [github repo](https://github.com/katat/vbot).
