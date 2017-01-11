@@ -65,51 +65,47 @@ So enough with the theory about the visual regression tests, let's take a look a
     "viewHeight": 677,
     "captureSelector": "html",
     "host": "http://todomvc.com",
-    "scenarios": [
-        {
-            "name": "todo test",
-            "path": "/examples/react",
-            "actions": [
-                {
-                    "type": "assert",
-                    "waitFor": ".new-todo",
-                    "shot": true,
-                    "comment": "wait for the input element .new-todo appear and take a screenshot"
-                },{
-                    "type": "enter",
-                    "waitFor": ".new-todo",
-                    "value": "drink a cup of coffee",
-                    "enter": true,
-                    "comment": "enter task message and press 'enter' key"
-                },{
-                    "type": "assert",
-                    "waitFor": "ul.todo-list li:nth-child(1)",
-                    "shot": true,
-                    "comment": "make sure there is a newly created task in the list and take screenshot"
-                },{
-                    "type": "enter",
-                    "waitFor": ".new-todo",
-                    "value": "drink another cup of coffee",
-                    "enter": true,
-                    "comment": "create second task"
-                },{
-                    "type": "assert",
-                    "waitFor": "ul.todo-list li:nth-child(2)",
-                    "shot": true,
-                    "comment": "ensure the second task is created"
-                },{
-                    "type": "click",
-                    "waitFor": "ul.todo-list li:nth-child(1) .toggle",
-                    "comment": "mark the first task as completed"
-                },{
-                    "type": "assert",
-                    "waitFor": "ul.todo-list li.completed:nth-child(1)",
-                    "shot": true,
-                    "commend": "ensure the completed status is reflected in the view and take screenshot"
-                }
-            ]
-        }
-    ]
+    "scenarios": [{
+        "name": "todo test",
+        "path": "/examples/react",
+        "actions": [{
+            "type": "assert",
+            "waitFor": ".new-todo",
+            "shot": true,
+            "comment": "wait for the input element .new-todo appear and take a screenshot"
+        },{
+            "type": "enter",
+            "waitFor": ".new-todo",
+            "value": "drink a cup of coffee",
+            "enter": true,
+            "comment": "enter task message and press 'enter' key"
+        },{
+            "type": "assert",
+            "waitFor": "ul.todo-list li:nth-child(1)",
+            "shot": true,
+            "comment": "make sure there is a newly created task in the list and take screenshot"
+        },{
+            "type": "enter",
+            "waitFor": ".new-todo",
+            "value": "drink another cup of coffee",
+            "enter": true,
+            "comment": "create second task"
+        },{
+            "type": "assert",
+            "waitFor": "ul.todo-list li:nth-child(2)",
+            "shot": true,
+            "comment": "ensure the second task is created"
+        },{
+            "type": "click",
+            "waitFor": "ul.todo-list li:nth-child(1) .toggle",
+            "comment": "mark the first task as completed"
+        },{
+            "type": "assert",
+            "waitFor": "ul.todo-list li.completed:nth-child(1)",
+            "shot": true,
+            "commend": "ensure the completed status is reflected in the view and take screenshot"
+        }]
+    }]
 }
 
 ```
