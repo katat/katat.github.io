@@ -7,11 +7,14 @@ author:     "Katat Choi"
 ---
 
 ## Motivations
-During the front end development, quite often, even small updates to the code, may requires a lot of interactions, clicks and typings, on a page in order to check the changes reflected in the view as expected. I tried several existing open source source VRTs to see if it can remedy this painful manual front end tests and adhere to agile development practices, but they seem either complicated to start with or sustain the tests in a long run.
+How long would you take to spot all the differences?
+![diff](/img/Bobs-art-2.png)
 
-Doing the repeated front end tests in the manual way, certainly kills productivity, consumes a huge amount of time and mental energy from developers. Then I created [vbot](https://github.com/katat/vbot) with the aims to help developers quickly create tests with minimum development overhead, and automating the testings "headlessly" at local dev environment or on a continuous integration server, supports End-to-End testings which involve front end interactions covering the backend processes.
+During the front end development, quite often, even small updates to the code, may requires a lot of interactions, clicks and typings, on a page in order to check the changes reflected in the view as expected. Doing the repeated front end tests in the manual way, certainly kills productivity, consumes a huge amount of time and mental energy from developers.
 
-This post discuss a bit more on the motivations behind vbot, accompany with a simple demo.
+I tried several existing automated visual regression test tools to see if it can remedy this painful manual front end tests and adhere to agile development practices, but they seem either complicated to start with or sustain the tests in a long run. Then I created [vbot](https://github.com/katat/vbot) with the aims to help developers quickly create tests with minimum development overhead, and automate the testings "headlessly" at local dev environment or on a continuous integration server, supports End-to-End testings which involve front end interactions covering the backend processes.
+
+This post discuss a bit more on the motivations behind vbot, and gives a simple demo.
 
 ### Agile process
 The key of [agile development](http://agilemanifesto.org/) process is to code up a working software, enabling users to interact with the software, and collecting the feedbacks as soon as possible. Then we repeat this process as a series of sprints until all the requirements have been satisfied. The process would introduce lots of changes to the code, as the requirements keep evolving, and probably need refactors to the source codes. With the tests covering the functionalities built in earlier sprints, it will keep the refactoring be more stable and give developers confidences to make necessary changes to maintain the health status of the source codes.
