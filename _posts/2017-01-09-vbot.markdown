@@ -55,14 +55,13 @@ Key features/goals of vbot:
 
 
 
-
 #### Why JSON based?
 JSON based schema makes it much easier to share tests among the team members, as the schema helps them have a common senses over the JSON definitions. When trying to make senses on how the tests work, the expected JSON syntax layout helps readers quickly skim through and locate to the spot on where they want to check more details. The natural of JSON syntax also helps highlight the test definition differences between current and previous commit.
 
 ## VBot in action
 So enough with the theory about the visual regression tests, let's take a look at how vbot can ease the VRT process. Suppose we want to test this [TODO](http://todomvc.com/examples/react) web app using vbot. We define the interaction flow in a JSON file as below:
 
-```
+```javascript
 {
     "viewWidth": 375,
     "viewHeight": 677,
@@ -115,7 +114,7 @@ So enough with the theory about the visual regression tests, let's take a look a
 
 The interaction flow is defined step by step, and straightforward. You probably could guess the meanings of the most parts in the definitions above. To execute the tests, run the tests targeting the json file:
 
-```
+```bash
 vbot --f=schema.json
 ```
 
@@ -123,7 +122,7 @@ It should execute the tests and generate the screenshots as shown below:
 
 ------------
 
-```
+```javascript
 {
     "type": "assert",
     "waitFor": ".new-todo",
@@ -134,14 +133,15 @@ It should execute the tests and generate the screenshots as shown below:
 ![0_assert-.new-todo.png](/img/0_assert-.new-todo.png)
 
 -------------
-```
+```javascript
 {
     "type": "enter",
     "waitFor": ".new-todo",
     "value": "drink a cup of coffee",
     "enter": true,
     "comment": "enter task message and press 'enter' key"
-},{
+}
+{
     "type": "assert",
     "waitFor": "ul.todo-list li:nth-child(1)",
     "shot": true,
@@ -151,14 +151,15 @@ It should execute the tests and generate the screenshots as shown below:
 ![2_assert-ul.todo-list_li:nth-child(1).png](/img/2_assert-ul.todo-list_li:nth-child(1).png)
 
 --------------
-```
+```javascript
 {
     "type": "enter",
     "waitFor": ".new-todo",
     "value": "drink another cup of coffee",
     "enter": true,
     "comment": "create second task"
-},{
+}
+{
     "type": "assert",
     "waitFor": "ul.todo-list li:nth-child(2)",
     "shot": true,
@@ -168,12 +169,13 @@ It should execute the tests and generate the screenshots as shown below:
 ![4_assert-ul.todo-list_li:nth-child(2).png](/img/4_assert-ul.todo-list_li:nth-child(2).png)
 
 ---------------
-```
+```javascript
 {
     "type": "click",
     "waitFor": "ul.todo-list li:nth-child(1) .toggle",
     "comment": "mark the first task as completed"
-},{
+}
+{
     "type": "assert",
     "waitFor": "ul.todo-list li.completed:nth-child(1)",
     "shot": true,
@@ -186,7 +188,7 @@ It should execute the tests and generate the screenshots as shown below:
 
 If this is the first time vbot run the tests for this JSON definition file, the images generated are the baselines. The subsequent tests will compare the newly generated image file with the baselines and highlight the differences if it is not 100% match. For example, let's change the action definition below:
 
-```
+```javascript
 {
     "type": "enter",
     "waitFor": ".new-todo",
@@ -197,7 +199,7 @@ If this is the first time vbot run the tests for this JSON definition file, the 
 
 to
 
-```
+```javascript
 {
     "type": "enter",
     "waitFor": ".new-todo",
@@ -216,7 +218,7 @@ After re-run the command line above, it should report there is test result misma
 
 When rebase is needed, run the following command to rebase the images:
 
-```
+```bash
 vbot --f=schema.json --rebase
 ```
 
