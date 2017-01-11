@@ -61,7 +61,7 @@ JSON based schema makes it much easier to share tests among the team members, as
 ## VBot in action
 So enough with the theory about the visual regression tests, let's take a look at how vbot can ease the VRT process. Suppose we want to test this [TODO](http://todomvc.com/examples/react) web app using vbot. We define the interaction flow in a JSON file as below:
 
-```javascript
+```json
 {
     "viewWidth": 375,
     "viewHeight": 677,
@@ -122,7 +122,7 @@ It should execute the tests and generate the screenshots as shown below:
 
 ------------
 
-```javascript
+```json
 {
     "type": "assert",
     "waitFor": ".new-todo",
@@ -133,7 +133,7 @@ It should execute the tests and generate the screenshots as shown below:
 ![0_assert-.new-todo.png](/img/0_assert-.new-todo.png)
 
 -------------
-```javascript
+```json
 {
     "type": "enter",
     "waitFor": ".new-todo",
@@ -151,7 +151,7 @@ It should execute the tests and generate the screenshots as shown below:
 ![2_assert-ul.todo-list_li:nth-child(1).png](/img/2_assert-ul.todo-list_li:nth-child(1).png)
 
 --------------
-```javascript
+```json
 {
     "type": "enter",
     "waitFor": ".new-todo",
@@ -169,7 +169,7 @@ It should execute the tests and generate the screenshots as shown below:
 ![4_assert-ul.todo-list_li:nth-child(2).png](/img/4_assert-ul.todo-list_li:nth-child(2).png)
 
 ---------------
-```javascript
+```json
 {
     "type": "click",
     "waitFor": "ul.todo-list li:nth-child(1) .toggle",
@@ -188,7 +188,7 @@ It should execute the tests and generate the screenshots as shown below:
 
 If this is the first time vbot run the tests for this JSON definition file, the images generated are the baselines. The subsequent tests will compare the newly generated image file with the baselines and highlight the differences if it is not 100% match. For example, let's change the action definition below:
 
-```javascript
+```json
 {
     "type": "enter",
     "waitFor": ".new-todo",
@@ -199,7 +199,7 @@ If this is the first time vbot run the tests for this JSON definition file, the 
 
 to
 
-```javascript
+```json
 {
     "type": "enter",
     "waitFor": ".new-todo",
