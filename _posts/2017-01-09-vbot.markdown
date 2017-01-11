@@ -55,6 +55,7 @@ Key features/goals of vbot:
 
 
 
+
 #### Why JSON based?
 JSON based schema makes it much easier to share tests among the team members, as the schema helps them have a common senses over the JSON definitions. When trying to make senses on how the tests work, the expected JSON syntax layout helps readers quickly skim through and locate to the spot on where they want to check more details. The natural of JSON syntax also helps highlight the test definition differences between current and previous commit.
 
