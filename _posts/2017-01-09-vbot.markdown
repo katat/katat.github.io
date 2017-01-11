@@ -41,6 +41,7 @@ The library is designed to integrate with the [CasperJS](http://casperjs.org) sc
 ### VBot, a new player
 The goal of [vbot](https://github.com/katat/vbot) is to help developers create test quickly with minimum overhead, save their [dev time and mental energy](http://www.johndcook.com/blog/2015/12/22/automate-to-save-mental-energy-not-time/), most importantly, sustain the quality of the work in a longer run.
 
+
 Key features/goals of vbot:
 
  - **JSON based**  
@@ -51,6 +52,7 @@ Key features/goals of vbot:
  Sceenshots can be taken at any point during the testing flow, then compare with baseline and generate reports.
  - **Portable**  
  Run on local dev environment or on remote server to facilitate continuous integration process.
+
 
 
 #### Why JSON based?
