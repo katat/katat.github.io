@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "vbot - JSON based visual regression tester"
-subtitle:   "A command line tool to do visual regression testings, supporting interaction flows with JSON based schema without writing any JS code."
+subtitle:   "A command line tool to do visual regression testings, support interaction flows by JSON configurations without custom scripts."
 date:       2017-01-09 12:00:00 +0800
 author:     "Katat Choi"
 ---
