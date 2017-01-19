@@ -26,6 +26,8 @@ Every time when there is a pull request, visual regression test can be used as a
 
 ## Open source VRT tools
 
+So what solutions are there to help?
+
 ### [BackstopJS](https://github.com/garris/BackstopJS)
 The idea of writing testing definitions in a JSON file is great, just need to define the different screen sizes and what parts of the web page to take screenshots by CSS selector without writing JS code. It is easy to share and communicate with, having a clear information about what to test, compared with lengthy JS codes. It also supports simulating user interactions using CasperJS custom scripts, referenced from the JSON file. However, it is more suitable for static web pages, as the creator states in its github page.
 >BackstopJS may be just the thing if you develop custom WordPress, Drupal or other CMS templates
