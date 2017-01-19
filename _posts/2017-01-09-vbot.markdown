@@ -12,7 +12,7 @@ How long would you take to spot all the differences?
 
 During the front end development, quite often, even small updates to the code, may requires a lot of interactions, clicks and typings, on a page in order to check the changes reflected in the view as expected. Doing the repeated front end tests in the manual way, certainly kills productivity, consumes a huge amount of time and mental energy from developers.
 
-I tried several existing automated visual regression test tools to see if it can remedy this painful manual front end tests and adhere to agile development practices, but they seem either complicated to start with or sustain the tests in a long run. Then I created [vbot](https://github.com/katat/vbot) with the aims to help developers quickly create tests with minimum development overhead, and automate the testings "headlessly" at local dev environment or on a continuous integration server, supports End-to-End testings which involve front end interactions covering the backend processes.
+I tried several existing automated visual regression test tools to see if it can remedy this painful manual front end tests and adhere to agile development practices, but they seem either too complicated to start with or difficult to sustain the tests in a long run. Then I created [vbot](https://github.com/katat/vbot) with the aims to help developers quickly create tests with minimum development overhead, and automate the testings "headlessly" at local dev environment or on a continuous integration server, supports End-to-End testings which involve front end interactions covering the backend processes.
 
 This post discuss a bit more on the motivations behind vbot, and gives a simple demo.
 
