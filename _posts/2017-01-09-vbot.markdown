@@ -22,12 +22,12 @@ The key of [agile development](http://agilemanifesto.org/) process is to code up
 Visual regression test facilitates quickly gathering visual feedbacks for changes, making it easier to test the components used in different parts of the web applications. Also it can be used as a part of End-to-End test, which does user interaction tests at the front end to make sure the user experienced as expected while monitoring the backend system processes.
 
 ### Tedious testings in SPA
-Single Page Application or any complicated web applications, normally includes many interactions in different views, and the states of a view could depend on the previous views's states. Manual testing on this type of application could involve a lot of clicks and typings just for a single function. No creative developers like to do this kind of dull testing work, or waste a huge amount of time in clicks and typings. The worse is that eventually it kills the developers' motivation for doing the job without a proper automated testing tool, leaving the projects with a decent quality.
+Single Page Application or any complicated web applications, normally includes many interactions in different views, and the states of a view could depend on the previous views's states. Manual testing on this type of application could involve a lot of clicks and typings just for a single function. No creative developers like to do this kind of dull testing work, wasting a huge amount of time in clicks and typings. The worse is that eventually it kills the developers' motivation for doing the job without a proper automated testing tool, leaving the projects with a decent quality.
 
 ### Collaboration
-It is usual to see different developers works on the same code for the time being, and mess up the code at some point. It is also common to see there are codes at different places having the same functionality, motivated to refactor it into a component to be reusable, but fear of the uncertain amount of time needed for the testings at different places.
+It is usual to see different developers work on the same code for the time being, and mess up the code at some point. It is also common to see there are codes at different places having the same functionality, and motivated to refactor it into a component to be reusable, but fear of the uncertain amount of time needed for the testings at different places.
 
-Automated tests is an efficient way to pass on the works among team members. It eases the learning curve at the code written by others, and encourage them to make bold changes to the code whenever necessary to balance the technical debt in a long run.
+Automated tests is an efficient way to pass on the works among team members. It eases the learning curve for the developers at the code written by others, and encourage them to make bold changes to the code whenever necessary to balance the technical debt in a long run.
 
 Whenever there is a pull request, visual regression test can be used as a testing component, reducing the manual testing efforts for every pull request and be more confident on the release cycles.
 
@@ -61,7 +61,7 @@ Key features/goals of vbot:
 
 
 #### Why JSON based?
-JSON based schema makes it much easier to share tests among the team members, as the schema helps them have a common senses over the JSON definitions. When trying to make senses on how the tests work, the expected JSON syntax layout helps readers quickly skim through and locate to the spot on where they want to check more details. The natural of JSON syntax also helps highlight the test definition differences between current and previous commit.
+JSON based schema makes it much easier to share tests among the team members, as the schema helps them have a common senses over the JSON definitions. When trying to make senses on how the tests work, the expected JSON syntax layout helps developers quickly skim through and locate to the spot on where they want to check more details. The natural of JSON syntax also helps highlight the test definition differences between current and previous commit.
 
 ## VBot in action
 So enough with the theory about the visual regression tests, let's take a look at how vbot can ease the VRT process. Suppose we want to test this [TODO](http://todomvc.com/examples/react) web app using vbot. We define the interaction flow in a JSON file as below:
