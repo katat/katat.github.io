@@ -1,28 +1,35 @@
 ---
 layout:     post
 title:      "vbot - JSON based visual regression tester"
-subtitle:   "A command line tool to do visual regression testings, supporting interaction flows with JSON based schema without writing any JS code."
+subtitle:   "A command line tool to do visual regression testings, support interaction flows by JSON configurations without custom scripts."
 date:       2017-01-09 12:00:00 +0800
 author:     "Katat Choi"
 ---
 
 ## Motivations
-for the front end, even small updates to the code, may requires a lot of interactions on the page in order to see the changes. The aims of vbot is to help developers quickly create tests with minimum development overhead, and automating the testings "headlessly" at local dev environment or on a continuous integration server, supports integration testings which include both front end and backend.
+How long would you take to spot all the differences?
+![diff](/img/Bobs-art-2.png)
+
+During the front end development, quite often, even small updates to the code, may requires a lot of interactions, clicks and typings, on a page in order to check the changes reflected in the view as expected. Doing the repeated front end tests in the manual way, certainly kills productivity, consumes a huge amount of time and mental energy from developers.
+
+I tried several existing automated visual regression test tools to see if it can remedy this painful manual front end tests and adhere to agile development practices, but they seem either complicated to start with or sustain the tests in a long run. Then I created [vbot](https://github.com/katat/vbot) with the aims to help developers quickly create tests with minimum development overhead, and automate the testings "headlessly" at local dev environment or on a continuous integration server, supports End-to-End testings which involve front end interactions covering the backend processes.
+
+This post discuss a bit more on the motivations behind vbot, and gives a simple demo.
 
 ### Agile process
-The key of [agile development](http://agilemanifesto.org/) process is to code up a working software, enabling users to interact with the software, and collecting the feedbacks as soon as possible. Then we repeat this process as sprints until all the requirements have been satisfied. The process no doubt would introduce lots of changes to the code, as the requirements keep evolving, and probably need refactors to the source codes. With the tests covering the functionalities built in earlier sprints will keep the refactor works more stable and give developers confidences to make necessary changes to maintain the health status of the source codes.
+The key of [agile development](http://agilemanifesto.org/) process is to code up a working software, enabling users to interact with the software, and collecting the feedbacks as soon as possible. Then we repeat this process as a series of sprints until all the requirements have been satisfied. The process would introduce lots of changes to the code, as the requirements keep evolving, and probably need refactors to the source codes. With the tests covering the functionalities built in earlier sprints, it will keep the refactoring be more stable and give developers confidences to make necessary changes to maintain the health status of the source codes.
 
-Visual regression test facilitates quickly gathering visual feedbacks for changes, making it easier to test the components used in different parts of the web applications. Also VRT can be used as a part of End-to-End test, which does user interaction tests at the front end to make sure the user experiences work as expected while monitoring the backend system processes.
+Visual regression test facilitates quickly gathering visual feedbacks for changes, making it easier to test the components used in different parts of the web applications. Also it can be used as a part of End-to-End test, which does user interaction tests at the front end to make sure the user experienced as expected while monitoring the backend system processes.
 
 ### Tedious testings in SPA
-Single Page Application or any complicated web applications, normally includes many interactions in different views, and the states of a view could depend on the previous views's states. Manual testing on this type of application could involve a lot of clicks and typings just for a single function. It is really dull for a creative developer to do this kind of testings work, and probably would waste a huge amount of time to dig out a bug. The worse is that eventually it kills the developers' motivation for doing the dull repeated works without a proper automated testing tool.
+Single Page Application or any complicated web applications, normally includes many interactions in different views, and the states of a view could depend on the previous views's states. Manual testing on this type of application could involve a lot of clicks and typings just for a single function. No creative developers like to do this kind of dull testing work, or waste a huge amount of time in clicks and typings. The worse is that eventually it kills the developers' motivation for doing the job without a proper automated testing tool, leaving the projects with a decent quality.
 
-### Collaborate on dirty works
-It is usual to see different developers works on the same code for the time being, and mess up the code at some point. It is also common to see there are codes at different places having the same functionality, and decided to refactor it into a component to be reusable, but fear of the uncertain amount of time needed for the testings at different places.
+### Collaboration
+It is usual to see different developers works on the same code for the time being, and mess up the code at some point. It is also common to see there are codes at different places having the same functionality, motivated to refactor it into a component to be reusable, but fear of the uncertain amount of time needed for the testings at different places.
 
-Automated tests is an efficient way to pass on the works among team members. It eases the learning curve at the code written by others, and encourage them to make bold changes to the code when necessary to maintain the health status of the code, and balance the technical debt in a long run.
+Automated tests is an efficient way to pass on the works among team members. It eases the learning curve at the code written by others, and encourage them to make bold changes to the code whenever necessary to balance the technical debt in a long run.
 
-Every time when there is a pull request, visual regression test can be used as a integration test tool, reduce the testing efforts for every pull requests and be more confident on the release cycles.
+Whenever there is a pull request, visual regression test can be used as a testing component, reducing the manual testing efforts for every pull request and be more confident on the release cycles.
 
 ## Open source VRT tools
 
@@ -37,21 +44,29 @@ The idea of writing testing definitions in a JSON file is great, just need to de
 The library is designed to integrate with the [CasperJS](http://casperjs.org) scripts, flexible to create screenshots at any part of the web page by CSS selector, at any point of time during the UI test flow.
 
 ### VBot, a new player
-The goal of [vbot](https://github.com/katat/vbot) is to help developers create test quickly with minimum learning curve, and save their dev time and mental energy, mostly importantly sustain the quality of the software work in a long run. It is designed to embrace the simplicity and flexibility to create tests. Here is the key features/goals of vbot:
-
- - **JSON based**  Tests can be defined in JSON with simple schema, without any JS codes.
- - **Interaction flow**  Support interaction tests, particularly useful for feature-rich web app or SPA.
- - **Screenshots**  Sceenshots can be taken at any point during the testing flow, then compare with baseline and generate reports.
- - **Portable**  Run on local dev environment or on remote server to facilitate continuous integration process.
+The goal of [vbot](https://github.com/katat/vbot) is to help developers create test quickly with minimum overhead, save their [dev time and mental energy](http://www.johndcook.com/blog/2015/12/22/automate-to-save-mental-energy-not-time/), most importantly, sustain the quality of the work in a longer run.
 
 
-### Why JSON based?
-JSON based schema makes it much easier to share test schema with the team members, as it has common understandings over the definitions. When reading the JSON definitions, it is much easier to skim through and locate to the spot where they want to, saving time and mental energy from messing with monkey JS test codes. It is also easier to compare the tests definitions between current and previous commit.
+Key features/goals of vbot:
+
+ - **JSON based**  
+ Tests can be defined in JSON with simple schema, without any JS codes.
+ - **Interaction flow**  
+ Support interaction tests, particularly useful for feature-rich web app or SPA.
+ - **Screenshots**  
+ Sceenshots can be taken at any point during the testing flow, then compare with baseline and generate reports.
+ - **Portable**  
+ Run on local dev environment or on remote server to facilitate continuous integration process.
+
+
+
+#### Why JSON based?
+JSON based schema makes it much easier to share tests among the team members, as the schema helps them have a common senses over the JSON definitions. When trying to make senses on how the tests work, the expected JSON syntax layout helps readers quickly skim through and locate to the spot on where they want to check more details. The natural of JSON syntax also helps highlight the test definition differences between current and previous commit.
 
 ## VBot in action
 So enough with the theory about the visual regression tests, let's take a look at how vbot can ease the VRT process. Suppose we want to test this [TODO](http://todomvc.com/examples/react) web app using vbot. We define the interaction flow in a JSON file as below:
 
-```
+```json
 {
     "viewWidth": 375,
     "viewHeight": 677,
@@ -102,9 +117,9 @@ So enough with the theory about the visual regression tests, let's take a look a
 
 ```
 
-The interaction flow is defined step by step, and straightforward. You probably could guess the meanings of the most parts in the definitions above. Then run the tests targeting the json file:
+The interaction flow is defined step by step, and straightforward. You probably could guess the meanings of the most parts in the definitions above. To execute the tests, run the tests targeting the json file:
 
-```
+```bash
 vbot --f=schema.json
 ```
 
@@ -112,7 +127,7 @@ It should execute the tests and generate the screenshots as shown below:
 
 ------------
 
-```
+```json
 {
     "type": "assert",
     "waitFor": ".new-todo",
@@ -123,14 +138,15 @@ It should execute the tests and generate the screenshots as shown below:
 ![0_assert-.new-todo.png](/img/0_assert-.new-todo.png)
 
 -------------
-```
+```json
 {
     "type": "enter",
     "waitFor": ".new-todo",
     "value": "drink a cup of coffee",
     "enter": true,
     "comment": "enter task message and press 'enter' key"
-},{
+}
+{
     "type": "assert",
     "waitFor": "ul.todo-list li:nth-child(1)",
     "shot": true,
@@ -140,14 +156,15 @@ It should execute the tests and generate the screenshots as shown below:
 ![2_assert-ul.todo-list_li:nth-child(1).png](/img/2_assert-ul.todo-list_li:nth-child(1).png)
 
 --------------
-```
+```json
 {
     "type": "enter",
     "waitFor": ".new-todo",
     "value": "drink another cup of coffee",
     "enter": true,
     "comment": "create second task"
-},{
+}
+{
     "type": "assert",
     "waitFor": "ul.todo-list li:nth-child(2)",
     "shot": true,
@@ -157,12 +174,13 @@ It should execute the tests and generate the screenshots as shown below:
 ![4_assert-ul.todo-list_li:nth-child(2).png](/img/4_assert-ul.todo-list_li:nth-child(2).png)
 
 ---------------
-```
+```json
 {
     "type": "click",
     "waitFor": "ul.todo-list li:nth-child(1) .toggle",
     "comment": "mark the first task as completed"
-},{
+}
+{
     "type": "assert",
     "waitFor": "ul.todo-list li.completed:nth-child(1)",
     "shot": true,
@@ -173,9 +191,9 @@ It should execute the tests and generate the screenshots as shown below:
 
 ------------
 
-If this is the first time vbot run the tests for this JSON definition file, the images generated are the baselines. The subsequent tests will compare the newly generated image file with the baselines and show the differences if it is not 100% match. For example, let's change the action definition below:
+If this is the first time vbot run the tests for this JSON definition file, the images generated are the baselines. The subsequent tests will compare the newly generated image file with the baselines and highlight the differences if it is not 100% match. For example, let's change the action definition below:
 
-```
+```json
 {
     "type": "enter",
     "waitFor": ".new-todo",
@@ -186,7 +204,7 @@ If this is the first time vbot run the tests for this JSON definition file, the 
 
 to
 
-```
+```json
 {
     "type": "enter",
     "waitFor": ".new-todo",
@@ -203,10 +221,12 @@ After re-run the command line above, it should report there is test result misma
 
 ------------------
 
-Then if rebase is needed, run the following command to rebase the images:
+When rebase is needed, run the following command to rebase the images:
 
-```
+```bash
 vbot --f=schema.json --rebase
 ```
 
-This is a basic demo on how to use vbot to do VRT. There are other features, such as preset localStorage values, set maximum timeout for assert an element to appear, scroll page, etc. For more details about vbot, please go to its [github repo](https://github.com/katat/vbot).
+There are other features, such as preset localStorage values, set maximum timeout for waiting an element to appear, scroll element, etc. For more details about vbot, please see [github repo](https://github.com/katat/vbot).
+
+I hope `vbot` could help a bit within your development processes. Certainly I welcome any suggestions or complaints, so feel free to leave comments.
