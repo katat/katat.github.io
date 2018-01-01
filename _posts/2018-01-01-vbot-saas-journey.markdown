@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "How I created a SaaS product"
-color-css: "black"
+color-css: "skyblue"
 subtitle:   "The journey of creating an UI testing SaaS product from the ground up"
 date:       2018-01-01 12:00:00 +0800
 author:     "Katat Choi"

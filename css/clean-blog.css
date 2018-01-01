@@ -149,6 +149,10 @@ hr.small {
   padding: 100px 0 50px;
   color: white;
 }
+
+.intro-header .post-heading.skyblue {
+  color: #2166a1;
+}
 @media only screen and (min-width: 768px) {
   .intro-header .site-heading,
   .intro-header .post-heading,
