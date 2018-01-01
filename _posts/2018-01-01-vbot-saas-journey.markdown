@@ -70,8 +70,7 @@ BackstopJS gave me a lot of inspiration of how visual regression test can help i
 Also I need it to be flexible to take the screenshots and do comparisons whenever needed in any testing steps in a scenario, not only for the final step.
 
 These experiments motivated me to wonder:
-
-> Why not formatting the common browser behaviors, such as clicking/typing/select/screenshot etc, into a standard JSON format. 
+> Why not formatting the common browser behaviors, such as clicking/typing/select/screenshot etc, into a standard JSON format.
 
 It would be easier to read and update for a long term than using freestyle testing scripts.
 
