@@ -105,6 +105,8 @@ There are multiple benefits in making the vbot as a service on the web, and I am
 - Tests run under the same containerized environment on the server, reducing the odds of getting differences in the same tests due to the variety of development environment setups.
 - Playbooks as well as the testing results can be shared with other users, easier for the team to communicate on the issues.
 
+![vbot-run-web](/img/vbot-debug-nowatermark.gif)
+
 ## Final words
 The journey started in 2016, and the first version of vbot on the github was released in early 2017.  As a side project, I spent most of my off hours in doing iterations to make it better and easier to use. It took almost 6 months to build the SaaS version.
 
