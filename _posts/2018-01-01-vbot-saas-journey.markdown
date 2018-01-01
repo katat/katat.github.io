@@ -8,7 +8,9 @@ author:     "Katat Choi"
 header-img: "img/tree-cloud.jpg"
 ---
 
-This post shares the journey of how I dealt with my own itch to improve my testing workflows. It discusses on what problems I faced during works and how I tried to get solutions to them. I started trying existing 3rd-party solutions. Then, I built an open source solution to better fit my own needs. Eventually,  its usage in team works motivated me to build a SaaS version.
+This post shares the journey of how I dealt with my own itch to improve testing workflows.
+
+It discusses on what problems I faced during works and how I tried to get solutions to them. I started trying existing 3rd-party solutions. Then, I built an open source solution to better fit my own needs. Eventually,  its usage in team works motivated me to build a SaaS version.
 
 ## What is the problem?
 Most of my projects are in full stack, which includes both the front end and the backend. The front end usually uses the JS MVC frameworks like, such as Angular.js or React.js. The backend is using Node.js stack. The front end connects with the backend using REST API architect.
@@ -67,10 +69,11 @@ BackstopJS gave me a lot of inspiration of how visual regression test can help i
 
 Also I need it to be flexible to take the screenshots and do comparisons whenever needed in any testing steps in a scenario, not only for the final step.
 
-
-## Build one for my own itch
 These experiments motivated me to wonder:
-Why not formatting the common browser behaviors, such as clicking/typing/select/screenshot etc, into a standard JSON format. It would be easier to read and update for a long term than using freestyle testing scripts.
+
+> Why not formatting the common browser behaviors, such as clicking/typing/select/screenshot etc, into a standard JSON format. 
+
+It would be easier to read and update for a long term than using freestyle testing scripts.
 
 So I create an open source library called [vbot](https://github.com/katat/vbot). Since then, I have been using it for testings in my front end projects.
 
