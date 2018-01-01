@@ -11,13 +11,15 @@ This post shares the journey of how I dealt with my own itch to improve my testi
 ## What is the problem?
 Most of my projects are in full stack, which includes both the front end and the backend. The front end usually uses the JS MVC frameworks like, such as Angular.js or React.js. The backend is using Node.js stack. The front end connects with the backend using REST API architect.
 
-For web SPA (single page application) apps, it is usually containing many states in a page. To reproduce one of these states, it may need many operations on the page in certain sequence. , such clicking this button, clicking that button, enter a value in an input, select a option from the dropdown menu etc.
+For web SPA (single page application) apps, it is usually containing many states in a page. To reproduce one of these states, it may need many operations on the page in certain sequence.
 
 Usually the front end is the central interaction point between the user and the backends. The testings of the backend may also need to go through the front end to verify the backend changes are compatible with the front end.
 
 ![diagram](/img/central-interaction-diagram.png)
 
 If the depth of the target state is deep, I need to repeat a certain number of manual behaviors in the browser to verify. It is time consuming to do this sort of repeated manual tests. It kills my productivity and creativity as a developer.
+
+![states-diagram](/img/states-change.png)
 
 Does this sound familiar?
 
