@@ -105,3 +105,7 @@ The journey started in 2016, and the first version of vbot on the github was rel
 I wasn't expecting I would create an open source library in the testing field, neither create a SaaS product around it. It is an experimental process of building it from the ground up, during which there were many researches and try-errors practices.
 
 I did have some doubts come from inside of myself in the process, wondering "Does it worth?". The main driven force of this whole journey is that it is a tool built for my own itch. I am glad it goes this far.
+
+[vbot.io](https://vbot.io) is still in beta. It will need a lot of improvements to make it production ready.
+
+This post shares a bit in the traces of my side project in UI testing. Hopefully it will be helpful for anyone who want to build their own projects. I will be happy to interact with any thoughts, please feel free to comment.
