@@ -1,9 +1,11 @@
 ---
 layout:     post
 title:      "How I created a SaaS product"
+color-css: "black"
 subtitle:   "The journey of creating an UI testing SaaS product from the ground up"
 date:       2018-01-01 12:00:00 +0800
 author:     "Katat Choi"
+header-img: "img/tree-cloud.jpg"
 ---
 
 This post shares the journey of how I dealt with my own itch to improve my testing workflows. It discusses on what problems I faced during works and how I tried to get solutions to them. I started trying existing 3rd-party solutions. Then, I built an open source solution to better fit my own needs. Eventually,  its usage in team works motivated me to build a SaaS version.
